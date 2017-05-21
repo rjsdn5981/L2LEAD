@@ -1,29 +1,6 @@
-# README #
+LEAD 서버 프로젝트
+LEAD 서버 는 유명한 한국 MMORPG를 위해 Java로 작성된 오픈 소스 서버 에뮬레이터입니다.
+이 페이지는 매우 기본적인 정보만을 제공합니다. LEAD 서버 개발 및 개발에 대한 자세한 내용은 개발자 포럼을 방문하십시오.
+마스터 브랜치는 최신 High Five 릴리스입니다.
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+개발 지점은 현재 하이 파이브 개발입니다
