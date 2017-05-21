@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import com.l2jserver.Config;
 import com.l2jserver.gameserver.data.sql.impl.ClanTable;
@@ -1213,6 +1215,16 @@ public class L2VillageMasterInstance extends L2NpcInstance
 	
 	private static boolean isValidName(String name)
 	{
-		return Config.CLAN_NAME_TEMPLATE.matcher(name).matches();
+		Pattern pattern;
+		try
+		{
+			pattern = Pattern.compile(Config.CLAN_NAME_TEMPLATE);
+		}
+		catch (PatternSyntaxException e)
+		{
+			_log.warning("ERROR: Wrong pattern for clan name!");
+			pattern = Pattern.compile(".*");
+		}
+		return pattern.matcher(name).matches();
 	}
 }

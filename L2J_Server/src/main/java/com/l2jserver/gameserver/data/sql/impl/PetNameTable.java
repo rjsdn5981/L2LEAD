@@ -24,6 +24,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import com.l2jserver.Config;
 import com.l2jserver.commons.database.pool.impl.ConnectionFactory;
@@ -57,7 +60,44 @@ public class PetNameTable
 	
 	public boolean isValidPetName(String name)
 	{
-		return Config.PET_NAME_TEMPLATE.matcher(name).matches();
+		boolean result = true;
+		
+		if (!isAlphaNumeric(name))
+		{
+			return result;
+		}
+		
+		Pattern pattern;
+		try
+		{
+			pattern = Pattern.compile(Config.PET_NAME_TEMPLATE);
+		}
+		catch (PatternSyntaxException e) // case of illegal pattern
+		{
+			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Pet name pattern of config is wrong!", e);
+			pattern = Pattern.compile(".*");
+		}
+		Matcher regexp = pattern.matcher(name);
+		if (!regexp.matches())
+		{
+			result = false;
+		}
+		return result;
+	}
+	
+	private boolean isAlphaNumeric(String text)
+	{
+		boolean result = true;
+		char[] chars = text.toCharArray();
+		for (int i = 0; i < chars.length; i++)
+		{
+			if (!Character.isLetterOrDigit(chars[i]))
+			{
+				result = false;
+				break;
+			}
+		}
+		return result;
 	}
 	
 	private static class SingletonHolder
