@@ -2725,7 +2725,7 @@ public final class Config
 			}
 			
 			final PropertiesParser leadConfig = new PropertiesParser(LEAD_FILE);
-			CREATE_KAMAEL_DISABLED = leadConfig.getBoolean("CreateKamaelDisabled", true);
+			CREATE_KAMAEL_DISABLED = leadConfig.getBoolean("CreateKamaelDisabled", false);
 		}
 		else if (Server.serverMode == Server.MODE_LOGINSERVER)
 		{
