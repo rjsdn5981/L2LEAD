@@ -125,6 +125,12 @@ public final class CharacterCreate extends L2GameClientPacket
 			return;
 		}
 		
+		if ((_race == 5) && Config.CREATE_KAMAEL_DISABLED)
+		{
+			sendPacket(new CharCreateFail(CharCreateFail.REASON_CREATE_NOT_ALLOWED));
+			return;
+		}
+		
 		if ((_face > 2) || (_face < 0))
 		{
 			_log.warning("Character Creation Failure: Character face " + _face + " is invalid. Possible client hack. " + getClient());

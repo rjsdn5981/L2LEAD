@@ -110,6 +110,12 @@ public final class Config
 	public static final String EMAIL_CONFIG_FILE = "./config/Email.properties";
 	public static final String CH_SIEGE_FILE = "./config/ConquerableHallSiege.properties";
 	public static final String GEODATA_FILE = "./config/GeoData.properties";
+	public static final String LEAD_FILE = "./config/LeaD.properties";
+	// --------------------------------------------------
+	// LEAD CUSTOM
+	// --------------------------------------------------
+	public static boolean CREATE_KAMAEL_DISABLED;
+	
 	// --------------------------------------------------
 	// L2J Variable Definitions
 	// --------------------------------------------------
@@ -2717,6 +2723,9 @@ public final class Config
 					}
 				}
 			}
+			
+			final PropertiesParser leadConfig = new PropertiesParser(LEAD_FILE);
+			CREATE_KAMAEL_DISABLED = leadConfig.getBoolean("CreateKamaelDisabled", true);
 		}
 		else if (Server.serverMode == Server.MODE_LOGINSERVER)
 		{
