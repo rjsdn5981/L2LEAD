@@ -35,6 +35,7 @@ import com.l2jserver.gameserver.model.events.returns.ChatFilterReturn;
 import com.l2jserver.gameserver.model.items.instance.L2ItemInstance;
 import com.l2jserver.gameserver.network.SystemMessageId;
 import com.l2jserver.gameserver.network.serverpackets.ActionFailed;
+import com.l2jserver.gameserver.network.serverpackets.SocialAction;
 import com.l2jserver.gameserver.util.Util;
 
 /**
@@ -216,6 +217,26 @@ public final class Say2 extends L2GameClientPacket
 				}
 			}
 			return;
+		}
+		
+		if (!activeChar.isDead() && (_text.equalsIgnoreCase("하이") || _text.equalsIgnoreCase("저기요") || _text.equalsIgnoreCase("방가") || _text.equalsIgnoreCase("ㅎㅇ") || _text.equalsIgnoreCase("안녕")) && (!activeChar.isRunning() || !activeChar.isAttackingNow() || !activeChar.isCastingNow()))
+		{
+			activeChar.broadcastPacket(new SocialAction(activeChar.getObjectId(), 2));
+		}
+		
+		if (!activeChar.isDead() && (_text.equalsIgnoreCase("ㅋ") || _text.equalsIgnoreCase("ㅋㅋ") || _text.equalsIgnoreCase("ㅋㅋㅋ") || _text.equalsIgnoreCase("ㅎㅎ")) && (!activeChar.isRunning() || !activeChar.isAttackingNow() || !activeChar.isCastingNow()))
+		{
+			activeChar.broadcastPacket(new SocialAction(activeChar.getObjectId(), 10));
+		}
+		
+		if (!activeChar.isDead() && (_text.equalsIgnoreCase("네") || _text.equalsIgnoreCase("네?") || _text.equalsIgnoreCase("넴") || _text.equalsIgnoreCase("넴?")) && (!activeChar.isRunning() || !activeChar.isAttackingNow() || !activeChar.isCastingNow()))
+		{
+			activeChar.broadcastPacket(new SocialAction(activeChar.getObjectId(), 6));
+		}
+		
+		if (!activeChar.isDead() && (_text.equalsIgnoreCase("아뇨") || _text.equalsIgnoreCase("아님") || _text.equalsIgnoreCase("ㄴㄴ") || _text.equalsIgnoreCase("노노")) && (!activeChar.isRunning() || !activeChar.isAttackingNow() || !activeChar.isCastingNow()))
+		{
+			activeChar.broadcastPacket(new SocialAction(activeChar.getObjectId(), 5));
 		}
 		
 		if (activeChar.isJailed() && Config.JAIL_DISABLE_CHAT)
