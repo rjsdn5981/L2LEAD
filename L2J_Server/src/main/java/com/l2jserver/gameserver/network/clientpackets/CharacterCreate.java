@@ -19,6 +19,8 @@
 package com.l2jserver.gameserver.network.clientpackets;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -51,6 +53,7 @@ import com.l2jserver.gameserver.network.L2GameClient;
 import com.l2jserver.gameserver.network.serverpackets.CharCreateFail;
 import com.l2jserver.gameserver.network.serverpackets.CharCreateOk;
 import com.l2jserver.gameserver.network.serverpackets.CharSelectionInfo;
+import com.l2jserver.gameserver.util.Broadcast;
 
 @SuppressWarnings("unused")
 public final class CharacterCreate extends L2GameClientPacket
@@ -202,6 +205,12 @@ public final class CharacterCreate extends L2GameClientPacket
 		sendPacket(new CharCreateOk());
 		
 		initNewChar(getClient(), newChar);
+		
+		if (Config.CREATED_NEW_ACCOUNT)
+		{
+			Broadcast.toAllOnlinePlayers("[" + _name + "] - " + newChar.getClassId() + " 신규 캐릭터 생성!");
+		}
+		LogRecord record = new LogRecord(Level.INFO, "신규 캐릭터 생성!");
 		
 		LOG.info("Created new character {} {}.", newChar, getClient());
 	}

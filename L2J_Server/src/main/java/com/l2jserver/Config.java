@@ -115,6 +115,7 @@ public final class Config
 	// LEAD CUSTOM
 	// --------------------------------------------------
 	public static boolean CREATE_KAMAEL_DISABLED;
+	public static boolean CREATED_NEW_ACCOUNT;
 	
 	// --------------------------------------------------
 	// L2J Variable Definitions
@@ -2726,6 +2727,7 @@ public final class Config
 			
 			final PropertiesParser leadConfig = new PropertiesParser(LEAD_FILE);
 			CREATE_KAMAEL_DISABLED = leadConfig.getBoolean("CreateKamaelDisabled", false);
+			CREATED_NEW_ACCOUNT = leadConfig.getBoolean("CreateNewAccount", false);
 		}
 		else if (Server.serverMode == Server.MODE_LOGINSERVER)
 		{
