@@ -183,7 +183,7 @@ public final class FinalEmperialTomb extends AbstractInstance
 	protected static final Location MOVE_TO_CENTER = new Location(-87904, -141296, -9168, 0);
 	// Misc
 	private static final int TEMPLATE_ID = 136; // this is the client number
-	private static final int MIN_PLAYERS = 36;
+	private static final int MIN_PLAYERS = 18;
 	private static final int MAX_PLAYERS = 45;
 	private static final int TIME_BETWEEN_DEMON_SPAWNS = 20000;
 	private static final int MAX_DEMONS = 24;
