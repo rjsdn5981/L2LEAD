@@ -286,7 +286,7 @@ public class ConfigUserInterface extends JFrame implements ActionListener
 				}
 				else if (line.indexOf('=') >= 0)
 				{
-					String[] kv = line.split("=");
+					String[] kv = line.split("=", 2);
 					String key = kv[0].trim();
 					StringBuilder value = new StringBuilder();
 					if (kv.length > 1)

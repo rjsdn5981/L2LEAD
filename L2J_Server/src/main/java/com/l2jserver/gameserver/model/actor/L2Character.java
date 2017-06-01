@@ -4021,7 +4021,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 		
 		// Z coordinate will follow geodata or client values
 		if ((Config.COORD_SYNCHRONIZE == 2) && !isFloating && !m.disregardingGeodata && ((GameTimeController.getInstance().getGameTicks() % 10) == 0 // once a second to reduce possible cpu load
-		) && GeoData.getInstance().hasGeo(xPrev, yPrev))
+			) && GeoData.getInstance().hasGeo(xPrev, yPrev))
 		{
 			int geoHeight = GeoData.getInstance().getSpawnHeight(xPrev, yPrev, zPrev);
 			dz = m._zDestination - geoHeight;
@@ -4689,8 +4689,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	}
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return True if arrows are available.
 	 */
 	protected boolean checkAndEquipArrows()
@@ -4699,8 +4698,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	}
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return True if bolts are available.
 	 */
 	protected boolean checkAndEquipBolts()
@@ -4710,9 +4708,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	
 	/**
 	 * Add Exp and Sp to the L2Character.<br>
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
-	 * <li>L2PetInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li> <li>L2PetInstance</li>
 	 * @param addToExp
 	 * @param addToSp
 	 */
@@ -4722,29 +4718,25 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	}
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return the active weapon instance (always equiped in the right hand).
 	 */
 	public abstract L2ItemInstance getActiveWeaponInstance();
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return the active weapon item (always equiped in the right hand).
 	 */
 	public abstract L2Weapon getActiveWeaponItem();
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return the secondary weapon instance (always equiped in the left hand).
 	 */
 	public abstract L2ItemInstance getSecondaryWeaponInstance();
 	
 	/**
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @return the secondary {@link L2Item} item (always equiped in the left hand).
 	 */
 	public abstract L2Item getSecondaryWeaponItem();
@@ -5006,8 +4998,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	
 	/**
 	 * Reduce the arrow number of the L2Character.<br>
-	 * <B><U> Overridden in </U> :</B>
-	 * <li>L2PcInstance</li>
+	 * <B><U> Overridden in </U> :</B> <li>L2PcInstance</li>
 	 * @param bolts
 	 */
 	protected void reduceArrowCount(boolean bolts)
@@ -5360,7 +5351,7 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 		{
 			switch (skill.getTargetType())
 			{
-				// only AURA-type skills can be cast without target
+			// only AURA-type skills can be cast without target
 				case AURA:
 				case FRONT_AURA:
 				case BEHIND_AURA:
@@ -5715,9 +5706,10 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 					targetsCastTarget = target.getAI().getCastTarget();
 				}
 				
-				if (!Config.RAID_DISABLE_CURSE && ((target.isRaid() && target.giveRaidCurse() && (getLevel() > (target.getLevel() + 8)))
-					|| (!skill.isBad() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.giveRaidCurse() && targetsAttackTarget.getAttackByList().contains(target) && (getLevel() > (targetsAttackTarget.getLevel() + 8)))
-					|| (!skill.isBad() && (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.giveRaidCurse() && targetsCastTarget.getAttackByList().contains(target) && (getLevel() > (targetsCastTarget.getLevel() + 8)))))
+				if (!Config.RAID_DISABLE_CURSE
+					&& ((target.isRaid() && target.giveRaidCurse() && (getLevel() > (target.getLevel() + 8)))
+						|| (!skill.isBad() && (targetsAttackTarget != null) && targetsAttackTarget.isRaid() && targetsAttackTarget.giveRaidCurse() && targetsAttackTarget.getAttackByList().contains(target) && (getLevel() > (targetsAttackTarget.getLevel() + 8))) || (!skill.isBad()
+						&& (targetsCastTarget != null) && targetsCastTarget.isRaid() && targetsCastTarget.giveRaidCurse() && targetsCastTarget.getAttackByList().contains(target) && (getLevel() > (targetsCastTarget.getLevel() + 8)))))
 				{
 					final CommonSkill curse = skill.isMagic() ? CommonSkill.RAID_CURSE : CommonSkill.RAID_CURSE2;
 					Skill curseSkill = curse.getSkill();
@@ -6338,6 +6330,16 @@ public abstract class L2Character extends L2Object implements ISkillsHolder, IDe
 	public final void setCurrentHp(double newHp)
 	{
 		getStatus().setCurrentHp(newHp);
+	}
+	
+	public final int getHpPercentage()
+	{
+		return (int) ((getCurrentHp() / getMaxHp()) * 100.0);
+	}
+	
+	public final int getMpPercentage()
+	{
+		return (int) ((getCurrentMp() / getMaxMp()) * 100.0);
 	}
 	
 	public final void setCurrentHpMp(double newHp, double newMp)
