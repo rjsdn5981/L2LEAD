@@ -153,7 +153,7 @@ public abstract class AbstractInstance extends AbstractNpcAI
 			
 			if (data.getDay() != null)
 			{
-				while (calendar.get(Calendar.DAY_OF_WEEK) != (data.getDay().getValue() + 1))
+				while (calendar.get(Calendar.DAY_OF_WEEK) != (Math.min(data.getDay().getValue() + 1, 7)))
 				{
 					calendar.add(Calendar.DAY_OF_MONTH, 1);
 				}
